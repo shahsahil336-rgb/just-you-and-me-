@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Little Date ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ffe4ec, #fff6f8, #ffd6e3);
+    overflow: hidden;
+    color: #4a2630;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 20px;
+    animation: floatUp 7s linear infinite;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Main card */
+.container {
+    width: 90%;
+    max-width: 430px;
+    min-height: 560px;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(150, 50, 80, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.screen {
+    display: none;
+    animation: fadeIn 0.7s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.emoji {
+    font-size: 60px;
+    margin: 20px 0;
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 18px;
+    color: #a83255;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 1.5;
+    margin: 25px 0;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.quote {
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.7;
+    margin: 30px 10px;
+}
+
+.highlight {
+    color: #c73562;
+    font-weight: bold;
+}
+
+button {
+    border: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #d93668, #f16b91);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 25px;
+    box-shadow: 0 8px 20px rgba(210, 50, 90, 0.25);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.answer {
+    background: rgba(255, 220, 230, 0.7);
+    padding: 18px;
+    border-radius: 20px;
+    margin-top: 20px;
+    font-size: 21px;
+    font-weight: bold;
+    color: #a52d50;
+}
+
+.date {
+    font-size: 30px;
+    font-weight: bold;
+    color: #c73562;
+    margin: 20px 0;
+}
+
+.location {
+    font-size: 28px;
+    font-weight: bold;
+    color: #b52f55;
+    margin: 20px 0;
+}
+
+.final {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.7;
+}
+
+.small {
+    margin-top: 25px;
+    font-size: 14px;
+    opacity: 0.65;
+}
+
+/* Final heart */
+.big-heart {
+    font-size: 90px;
+    animation: heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<div class="heart" style="left:10%; animation-delay:0s;">❤️</div>
+<div class="heart" style="left:25%; animation-delay:2s;">💗</div>
+<div class="heart" style="left:45%; animation-delay:4s;">💕</div>
+<div class="heart" style="left:65%; animation-delay:1s;">💖</div>
+<div class="heart" style="left:85%; animation-delay:3s;">❤️</div>
+
+<div class="container">
+
+    <!-- SCREEN 1 -->
+    <div class="screen active" id="screen1">
+
+        <div class="emoji">🌸</div>
+
+        <h1>A Little Something...</h1>
+
+        <div class="quote">
+            “Kuch pal special hote hain…<br>
+            jab kisi khaas insaan ke saath<br>
+            bitaye jaate hain.” ❤️
+        </div>
+
+        <button onclick="nextScreen(2)">
+            Continue 💌
+        </button>
+
+    </div>
+
+
+    <!-- SCREEN 2 -->
+    <div class="screen" id="screen2">
+
+        <div class="emoji">🥹❤️</div>
+
+        <h1>Ek Question Hai...</h1>
+
+        <h2>
+            Date pe chalogi<br>
+            mere saath?
+        </h2>
+
+        <button onclick="nextScreen(3)">
+            Haan, chalungi! 🫶
+        </button>
+
+    </div>
+
+
+    <!-- SCREEN 3 -->
+    <div class="screen" id="screen3">
+
+        <div class="emoji">💭</div>
+
+        <h1>Kab?</h1>
+
+        <div class="answer">
+            📅 30-09-2026
+        </div>
+
+        <button onclick="nextScreen(4)">
+            Next ❤️
+        </button>
+
+    </div>
+
+
+    <!-- SCREEN 4 -->
+    <div class="screen" id="screen4">
+
+        <div class="emoji">📍</div>
+
+        <h1>Kidhar?</h1>
+
+        <div class="location">
+            Jharsuguda 🌸
+        </div>
+
+        <button onclick="nextScreen(5)">
+            Achhaaa... 😌
+        </button>
+
+    </div>
+
+
+    <!-- SCREEN 5 -->
+    <div class="screen" id="screen5">
+
+        <div class="emoji">😋🛍️</div>
+
+        <h1>Kya Karenge?</h1>
+
+        <div class="answer">
+            Kuch kuch khayenge 😋❤️
+            <br><br>
+            Aur shopping karenge! 🛍️✨
+        </div>
+
+        <button onclick="nextScreen(6)">
+            Date Confirm? 💕
+        </button>
+
+    </div>
+
+
+    <!-- SCREEN 6 -->
+    <div class="screen" id="screen6">
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <h1>Date Pakki!</h1>
+
+        <div class="final">
+
+            30 September 2026 📅
+            <br>
+            Jharsuguda 📍
+            <br><br>
+
+            You & Me ❤️
+            <br>
+            Food + Shopping + Memories ✨
+
+        </div>
+
+        <p class="small">
+            “Bas ab mana mat karna... 😌❤️”
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function nextScreen(number) {
+
+    document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+    });
+
+    document.getElementById("screen" + number)
+        .classList.add("active");
+}
+
+
+/* Create more floating hearts */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const hearts = ["❤️","💗","💕","💖","💓"];
+
+    heart.innerHTML =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+}
+
+setInterval(createHeart, 800);
+
+</script>
+
+</body>
+</html>
